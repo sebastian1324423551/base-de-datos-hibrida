@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Productos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Gestión de Productos</h1>
+        
+        <div class="action-buttons">
+            <button class="btn btn-status">🔗 Verificar Servidor</button>
+            <button class="btn btn-db">🗄️ Inicializar BD</button>
+            <button class="btn btn-test">🧪 Datos de Prueba</button>
+            <button class="btn btn-mysql">📦 Productos MySQL</button>
+            <button class="btn btn-mongo">🍃 Productos MongoDB</button>
+        </div>
+        
+        <div id="statusMessage" class="status-info"></div>
+        
+        <div class="product-form" id="productFormContainer" style="display: none;">
+            <h3 id="formTitle">➕ Nuevo Producto</h3>
+            <form id="productForm">
+                <input type="hidden" id="productId">
+                
+                <div class="form-group">
+                    <label for="productName">Nombre:</label>
+                    <input type="text" id="productName" required placeholder="Ingrese el nombre del producto">
+                </div>
+                
+                <div class="form-group">
+                    <label for="productPrice">Precio:</label>
+                    <input type="number" id="productPrice" step="0.01" min="0" required placeholder="0.00">
+                </div>
+                
+                <div class="form-group">
+                    <label for="productStock">Stock:</label>
+                    <input type="number" id="productStock" min="0" value="0" placeholder="0">
+                </div>
+                
+                <div class="form-buttons">
+                    <button type="submit" class="btn-save">💾 Guardar</button>
+                    <button type="button" class="btn-cancel">✖️ Cancelar</button>
+                </div>
+            </form>
+        </div>
+        
+        <div class="result-container">
+            <h3 class="result-title" id="resultTitle">📋 Resultados</h3>
+            <div id="resultContent">
+                <div class="loading">
+                    <div class="loading-spinner"></div>
+                    <p>Haz clic en un botón para comenzar...</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="info-box">
+            <h3>📚 Rutas disponibles:</h3>
+            <ul>
+                <li><strong>GET</strong> <code>/api/products</code> - Obtener todos los productos (MySQL)</li>
+                <li><strong>POST</strong> <code>/api/products</code> - Crear nuevo producto (MySQL)</li>
+                <li><strong>GET</strong> <code>/api/products/:id</code> - Obtener producto por ID</li>
+                <li><strong>PUT</strong> <code>/api/products/:id</code> - Actualizar producto</li>
+                <li><strong>DELETE</strong> <code>/api/products/:id</code> - Eliminar producto</li>
+                <li><strong>GET</strong> <code>/api/mongo/products</code> - Productos de MongoDB</li>
+                <li><strong>GET</strong> <code>/status</code> - Estado del servidor</li>
+                <li><strong>GET</strong> <code>/mongo-status</code> - Estado de MongoDB</li>
+                <li><strong>POST</strong> <code>/init-db</code> - Inicializar base de datos</li>
+                <li><strong>POST</strong> <code>/setup-test-data</code> - Crear datos de prueba</li>
+                <li><strong>GET</strong> <code>/diagnose</code> - Diagnóstico del sistema</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>

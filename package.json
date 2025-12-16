@@ -1,0 +1,25 @@
+{
+  "name": "44nodjs-3",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "node Nodjs/app.js",
+    "dev": "nodemon Nodjs/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "mongo:test": "node Nodjs/scripts/testMongo.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "cors": "2.8.5",
+    "dotenv": "17.0.0",
+    "express": "5.1.0",
+    "mongodb": "^6.21.0",
+    "mysql2": "3.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "3.0.1"
+  }
+}
