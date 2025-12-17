@@ -1,5 +1,5 @@
 // main.js - JavaScript separado para la gestión de productos
-const API_BASE = 'http://localhost:8000';
+const API_BASE = 'https://base-de-datos-hibrida.onrender.com';
 let currentSource = 'mysql';
 
 // Funciones de utilidad
