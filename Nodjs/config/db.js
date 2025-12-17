@@ -33,18 +33,13 @@ console.log('Comprobación env -> DB_HOST:', process.env.DB_HOST || '(no definid
 
 export const pool = createPool(poolConfig);
 
-// También necesitas añadir la verificación de conexión:
+// Verificación de conexión (no falla si MySQL no está disponible)
 pool.getConnection()
     .then(connection => {
         console.log('✅ Conexión exitosa a MySQL. Base de datos: ', connection.config.database);
         connection.release();
     })
     .catch(error => {
-        console.error('❌ Error al conectar a MySQL:', error.message);
-        console.log('Verifica:');
-        console.log('- Usuario:', poolConfig.user);
-        console.log('- Base de datos:', poolConfig.database);
-        console.log('- Puerto:', poolConfig.port);
-        console.log('- ¿Servidor MySQL está corriendo?');
-        process.exit(1);
+        console.warn('⚠️ MySQL no disponible:', error.message);
+        console.log('💡 El servidor continuará solo con MongoDB');
     });
