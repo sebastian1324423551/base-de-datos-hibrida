@@ -292,8 +292,7 @@ async function loadMongoDBProducts() {
             if (data.products.length === 0) {
                 showResult('🍃 Productos MongoDB (0)', `
                     <p>No hay productos en MongoDB.</p>
-                    <p><strong>Nota:</strong> MongoDB no está instalado o no está corriendo.</p>
-                    <p>El servidor funciona perfectamente solo con MySQL.</p>
+                    <button class="btn" onclick="openForm()" style="background: #4CAF50; color: white; margin-top: 10px;">➕ Agregar Producto</button>
                 `);
                 return;
             }
@@ -410,7 +409,12 @@ async function saveProduct(event) {
     }
     
     const method = productId ? 'PUT' : 'POST';
-    const url = productId ? `${API_BASE}/api/products/${productId}` : `${API_BASE}/api/products`;
+    let url;
+    if (currentSource === 'mongodb') {
+        url = `${API_BASE}/api/mongo/products`;
+    } else {
+        url = productId ? `${API_BASE}/api/products/${productId}` : `${API_BASE}/api/products`;
+    }
     
     showStatus(productId ? 'Actualizando producto...' : 'Creando producto...', 'info');
     
